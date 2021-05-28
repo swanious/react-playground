@@ -1,8 +1,16 @@
 import React from 'react';
-import EventPractice from 'components/EventPractice';
+import { EventPractice, ValidationSample, ScrollBox } from 'components';
 
 function App() {
-  return <EventPractice />;
+  return (
+    <>
+      <EventPractice />
+      <hr />
+      <ValidationSample />
+      <hr />
+      <ScrollBox />
+    </>
+  );
 }
 
 export default App;

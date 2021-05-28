@@ -52,7 +52,7 @@ function EventPractice() {
         onChange={(e) => onChange(e)}
         onKeyPress={(e) => onkeypress(e)}
       />
-      <button type="button" onClick={onClick}>
+      <button style={{ marginBottom: 10 }} type="button" onClick={onClick}>
         확인
       </button>
     </div>
