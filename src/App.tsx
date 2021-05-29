@@ -1,15 +1,16 @@
 import React from 'react';
-import { EventPractice, ValidationSample, ScrollBox } from 'components';
+import { Route } from 'react-router-dom';
+import { BasicSample, HooksSample } from 'pages';
+import { Header } from 'components/common';
 
 function App() {
   return (
-    <>
-      <EventPractice />
-      <hr />
-      <ValidationSample />
-      <hr />
-      <ScrollBox />
-    </>
+    <div>
+      <Header />
+
+      <Route path="/" component={BasicSample} exact />
+      <Route path="/hooks" component={HooksSample} />
+    </div>
   );
 }
 

@@ -14,9 +14,9 @@ const InnerBox = styled.div`
   background: 'linear-gradient(white, black)';
 `;
 
-function ScrollBox() {
+function RefSample() {
   const boxRef = React.useRef<any>();
-  console.log(boxRef.current.scrollHeight, boxRef.current.clientHeight);
+  console.log(boxRef.current);
 
   const scrollToBottom = () => {
     // scrollHeight(box 전체 높이), clientHeight(보이는 box의 높이), scrollTop(맨 위의 높이)
@@ -38,4 +38,4 @@ function ScrollBox() {
   );
 }
 
-export default ScrollBox;
+export default RefSample;
