@@ -7,16 +7,17 @@ function HooksSample() {
     <>
       <Counter />
       <hr />
-
-      {visible && <Info />}
-      <button
-        type="button"
-        onClick={() => {
-          setVisible(!visible);
-        }}
-      >
-        {visible ? '숨기기' : '보이기'}
-      </button>
+      <div style={{ margin: 20 }}>
+        {visible && <Info />}
+        <button
+          type="button"
+          onClick={() => {
+            setVisible(!visible);
+          }}
+        >
+          {visible ? '숨기기' : '보이기'}
+        </button>
+      </div>
       <hr />
 
       <ReducerSample />
