@@ -27,7 +27,7 @@ function RefSample() {
   };
   return (
     <>
-      <h1>ref 연습2</h1>
+      <h1>scroll Event with useRef Hook !</h1>
       <OuterBox ref={boxRef}>
         <InnerBox />
       </OuterBox>
