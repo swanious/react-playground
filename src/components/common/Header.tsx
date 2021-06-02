@@ -26,6 +26,7 @@ const Wrapper = styled.div`
 const tags = [
   { id: 1, path: '/', title: 'Basic' },
   { id: 2, path: '/hooks', title: 'Hooks' },
+  { id: 3, path: '/todos', title: 'Todo' },
 ];
 
 function Header() {
