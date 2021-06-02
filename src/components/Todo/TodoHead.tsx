@@ -24,12 +24,16 @@ const TodoHeadBlock = styled.div`
   }
 `;
 
+const day: string[] = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
+
 function TodoHead() {
   return (
     <TodoHeadBlock>
       <h1>{`${new Date().getFullYear()}년 ${
         new Date().getMonth() * 1 + 1
       }월 ${new Date().getDate()}일`}</h1>
+      <div className="day">{day[new Date().getDay()]}</div>
+      <div className="tasks-left">남은 할 일 :</div>
     </TodoHeadBlock>
   );
 }
