@@ -1,6 +1,6 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint', 'prettier'],
+  plugins: ['@typescript-eslint', 'prettier', 'react-hooks'],
   extends: [
     'airbnb',
     'plugin:import/errors',
@@ -21,5 +21,7 @@ module.exports = {
     'react/prop-types': 0,
     'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
     'jsx-a11y/no-noninteractive-element-interactions': 0,
+    'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
+    'react-hooks/exhaustive-deps': 'warn', // Checks effect dependencies
   },
 };
