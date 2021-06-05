@@ -38,6 +38,9 @@ type Action =
 
 // 디스패치를 위한 타입 (Dispatch를 리액트에서 불러올 수 있음)
 type TodoDispatch = Dispatch<Action>;
+type TodoRef = {
+  current: number;
+};
 
 function todoReducer(state: State[], action: Action): State[] {
   switch (action.type) {
@@ -58,11 +61,12 @@ function todoReducer(state: State[], action: Action): State[] {
 // 빈 값을 넣으면 에러발생(인자를 1개이상 넣어줘야함)
 const TodoStateContext = createContext<State[] | null>(null);
 const TodoDispatchContext = createContext<TodoDispatch | null>(null);
-const TodoNextIdContext = createContext<any>(null);
+const TodoNextIdContext = createContext<TodoRef | null>(null); // TodoRef타입을 선업하고, current 타입에 number를 지정했다.
 
+// children은 ReactNode로 자식 컴포넌트를 가리킴
 export function TodoProvider({ children }: { children: React.ReactNode }) {
   const [state, dispatch] = useReducer(todoReducer, initialTodos);
-  const nextId = useRef(5);
+  const nextId = useRef<number>(5);
 
   return (
     <TodoStateContext.Provider value={state}>
@@ -73,6 +77,10 @@ export function TodoProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
+/*
+  이렇게 따로 관리하면 필요한 함수만 불러 사용해서 최적화할 때 좋다.
+  + 에러핸들링은 덤덤덤!
+*/
 export function useTodoState(): State[] {
   const context = useContext(TodoStateContext);
   if (!context) {
@@ -89,7 +97,7 @@ export function useTodoDispatch(): TodoDispatch {
   return context;
 }
 
-export function useTodoNextId(): any {
+export function useTodoNextId(): TodoRef {
   const context = useContext(TodoNextIdContext);
   if (!context) {
     throw new Error('Cannot find Provider');
