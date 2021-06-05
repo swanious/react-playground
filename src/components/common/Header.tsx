@@ -33,7 +33,8 @@ function Header() {
   return (
     <Wrapper>
       {tags.map((tag) => (
-        <NavLink key={tag.id} to={tag.path} activeClassName="selected" exact>
+        // draggable={false}를 통해 링크를 누를 때 불필요한 drag이벤트를 막기
+        <NavLink key={tag.id} to={tag.path} draggable={false} activeClassName="selected" exact>
           {tag.title}
         </NavLink>
       ))}
