@@ -91,4 +91,4 @@ function TodoItem({ id, done, text }: Todo) {
   );
 }
 
-export default TodoItem;
+export default React.memo(TodoItem);

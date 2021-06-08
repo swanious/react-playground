@@ -1,5 +1,5 @@
 import { create } from 'domain';
-import React, { useReducer, createContext, useContext, useRef, Dispatch } from 'react';
+import React, { useReducer, createContext, useContext, useRef, Dispatch, useState } from 'react';
 
 function createBulkTodos() {
   const array = [];
@@ -10,6 +10,7 @@ function createBulkTodos() {
       checked: false,
     });
   }
+  console.log('렌더링 발생 ');
   return array;
 }
 
@@ -35,7 +36,7 @@ type TodoRef = {
   current: number;
 };
 
-function todoReducer(state: State[], action: Action): State[] {
+function todoReducer(state: any[], action: Action): any[] {
   switch (action.type) {
     case 'CREATE':
       return state.concat(action.todo);
@@ -58,7 +59,7 @@ const TodoNextIdContext = createContext<TodoRef | null>(null); // TodoRef타입�
 
 // children은 ReactNode로 자식 컴포넌트를 가리킴
 export function TodoProvider({ children }: { children: React.ReactNode }) {
-  const [state, dispatch] = useReducer(todoReducer, initialTodos);
+  const [state, dispatch] = useReducer(todoReducer, undefined, createBulkTodos);
   const nextId = useRef<number>(2501);
 
   return (
