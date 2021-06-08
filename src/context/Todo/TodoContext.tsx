@@ -1,27 +1,20 @@
-import React, { useReducer, createContext, useContext, useRef, Dispatch, Ref } from 'react';
+import { create } from 'domain';
+import React, { useReducer, createContext, useContext, useRef, Dispatch } from 'react';
 
-const initialTodos: State[] = [
-  {
-    id: 1,
-    text: '프로젝트 생성하기',
-    done: true,
-  },
-  {
-    id: 2,
-    text: '컴포넌트 스타일링하기',
-    done: true,
-  },
-  {
-    id: 3,
-    text: 'Context 생성하기',
-    done: false,
-  },
-  {
-    id: 4,
-    text: '기능 구현하기',
-    done: false,
-  },
-];
+function createBulkTodos() {
+  const array = [];
+  for (let i = 1; i <= 2500; i += 1) {
+    array.push({
+      id: i,
+      text: `할 일 ${i}`,
+      checked: false,
+    });
+  }
+  return array;
+}
+
+// lag 발생시키기 위해 초기 2500개 데이터 받아주기
+const initialTodos: any[] = createBulkTodos();
 
 // 상태를 위한 타입
 type State = {
@@ -66,7 +59,7 @@ const TodoNextIdContext = createContext<TodoRef | null>(null); // TodoRef타입�
 // children은 ReactNode로 자식 컴포넌트를 가리킴
 export function TodoProvider({ children }: { children: React.ReactNode }) {
   const [state, dispatch] = useReducer(todoReducer, initialTodos);
-  const nextId = useRef<number>(5);
+  const nextId = useRef<number>(2501);
 
   return (
     <TodoStateContext.Provider value={state}>
