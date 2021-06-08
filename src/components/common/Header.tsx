@@ -27,6 +27,7 @@ const tags = [
   { id: 1, path: '/', title: 'Basic' },
   { id: 2, path: '/hooks', title: 'Hooks' },
   { id: 3, path: '/todos', title: 'Todo' },
+  { id: 4, path: '/news', title: 'News' },
 ];
 
 function Header() {
