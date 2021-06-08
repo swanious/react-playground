@@ -23,7 +23,7 @@ interface Article {
   urlToImage: string;
 }
 
-function NewsList() {
+function NewsList({ category }: any) {
   const [articles, setArticles] = useState<Article[] | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -31,8 +31,9 @@ function NewsList() {
     const fetchData = async () => {
       setLoading(true);
       try {
+        const query = category === 'all' ? '' : `&category=${category}`;
         const response = await axios.get(
-          'https://newsapi.org/v2/top-headlines?country=kr&apiKey=9b05041d789f4c3cb78a91f9ddda0c1b',
+          `https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=9b05041d789f4c3cb78a91f9ddda0c1b`,
         );
         setArticles(response.data.articles);
       } catch (e) {
@@ -41,7 +42,7 @@ function NewsList() {
       setLoading(false);
     };
     fetchData();
-  }, []);
+  }, [category]);
 
   if (loading) {
     return <NewsListBlock>대기 중...</NewsListBlock>;
